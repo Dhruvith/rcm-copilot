@@ -14,7 +14,7 @@ import {
     Legend,
 } from "recharts";
 
-const API_URL = "http://localhost:8000";
+const API_URL = "/api";
 
 const CHART_COLORS = [
     "#6366f1",
