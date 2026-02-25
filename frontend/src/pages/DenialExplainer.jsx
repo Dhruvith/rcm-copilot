@@ -91,8 +91,10 @@ export default function DenialExplainer() {
             });
             setResult(response.data);
         } catch (err) {
+            console.error("API Error:", err);
             setError(
                 err.response?.data?.detail ||
+                err.message ||
                 "Something went wrong. Please check your backend is running and your Groq API key is set."
             );
         } finally {

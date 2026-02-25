@@ -141,11 +141,14 @@ export default function Analytics() {
             });
             setResult(response.data);
         } catch (err) {
+            console.error("API Error:", err);
             setError(
                 err.response?.data?.detail ||
-                "Upload failed. Ensure your CSV has a 'denial_code' or 'code' column."
+                err.message ||
+                "Upload failed. Ensure backend is running and file is valid."
             );
-        } finally {
+        }
+        finally {
             setLoading(false);
         }
     };

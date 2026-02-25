@@ -47,9 +47,11 @@ export default function ClaimChecker() {
             const response = await axios.post(`${API_URL}/claim/validate`, payload);
             setResult(response.data);
         } catch (err) {
+            console.error("API Error:", err);
             setError(
                 err.response?.data?.detail ||
-                "Validation failed. Check your backend is running."
+                err.message ||
+                "Validation failed. Check backend connection."
             );
         } finally {
             setLoading(false);

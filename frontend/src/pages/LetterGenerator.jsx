@@ -107,11 +107,14 @@ export default function LetterGenerator() {
             const response = await axios.post(`${API_URL}/denial/appeal-letter`, payload);
             setResult(response.data);
         } catch (err) {
+            console.error("API Error:", err);
             setError(
                 err.response?.data?.detail ||
-                "Something went wrong. Check your backend is running and Groq API key is set."
+                err.message ||
+                "Failed to generate appeal letter. Ensure backend is running."
             );
-        } finally {
+        }
+        finally {
             setLoading(false);
         }
     };
