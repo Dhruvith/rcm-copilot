@@ -10,11 +10,10 @@ if current_dir not in sys.path:
 
 from routes.denial import router as denial_router
 from routes.claim_check import router as claim_router
-from routes.analytics import router as analytics_router
 
 app = FastAPI(
     title="RCM Copilot API",
-    description="AI-Powered Claim Assistant — Denial Explainer, Claim Checker, Analytics & Appeal Letters",
+    description="AI-Powered Claim Assistant — Denial Explainer, Claim Checker & Appeal Letters",
     version="1.0.0",
     root_path="/api"  # Important for Vercel routing
 )
@@ -31,7 +30,7 @@ app.add_middleware(
 # Register routes
 app.include_router(denial_router, prefix="/denial", tags=["Denial Explainer"])
 app.include_router(claim_router, prefix="/claim", tags=["Claim Checker"])
-app.include_router(analytics_router, prefix="/analytics", tags=["Analytics"])
+
 
 
 @app.get("/")
@@ -43,6 +42,6 @@ def root():
             "denial_explain": "POST /denial/explain",
             "appeal_letter": "POST /denial/appeal-letter",
             "claim_validate": "POST /claim/validate",
-            "analytics_upload": "POST /analytics/upload",
+
         },
     }

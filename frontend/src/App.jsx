@@ -1,14 +1,14 @@
 import { useState } from "react";
 import DenialExplainer from "./pages/DenialExplainer.jsx";
 import ClaimChecker from "./pages/ClaimChecker.jsx";
-import Analytics from "./pages/Analytics.jsx";
+
 import LetterGenerator from "./pages/LetterGenerator.jsx";
 
 const NAV_ITEMS = [
     { id: "home", label: "Dashboard", icon: "🏠", section: "main" },
     { id: "denial", label: "Denial Explainer", icon: "🔍", section: "main", badge: "AI" },
     { id: "claim", label: "Claim Checker", icon: "✅", section: "main" },
-    { id: "analytics", label: "Analytics", icon: "📊", section: "main" },
+
     { id: "letter", label: "Appeal Letters", icon: "📝", section: "main", badge: "AI" },
 ];
 
@@ -68,15 +68,6 @@ function HomePage({ onNavigate }) {
                     <span className="feature-card-arrow">→</span>
                 </div>
 
-                <div className="feature-card" onClick={() => onNavigate("analytics")}>
-                    <div className="feature-card-icon">📊</div>
-                    <h3>Denial Pattern Analyzer</h3>
-                    <p>
-                        Upload your denied claims CSV and get charts, trends, and an
-                        AI-powered executive summary of your denial patterns.
-                    </p>
-                    <span className="feature-card-arrow">→</span>
-                </div>
 
                 <div className="feature-card" onClick={() => onNavigate("letter")}>
                     <div className="feature-card-icon">📝</div>
@@ -107,8 +98,6 @@ export default function App() {
                 return <DenialExplainer />;
             case "claim":
                 return <ClaimChecker />;
-            case "analytics":
-                return <Analytics />;
             case "letter":
                 return <LetterGenerator />;
             default:
